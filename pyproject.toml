@@ -1,14 +1,29 @@
 [project]
 name = "fastapi-x-typer-cli"
 version = "0.1.0"
-description = "Add your description here"
+description = "A demo to demonstrate how to use Typer + FastAPI to create a CLI and API at the same time and share the same business logic and data models"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "fastapi[standard]>=0.116.1",
+    "pydantic>=2.11.7",
+    "typer>=0.16.1",
+    "uvicorn>=0.35.0",
+]
 
 # https://github.com/astral-sh/uv/issues/6925
 [tool.uv]
 index-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+# This will make this repo a package, so that we can install it with `pip install -e .` (but `uv sync` already does this)
+package = true
 
 [[tool.uv.index]]
 url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+]
+
+[project.scripts]
+myapp = "app.cli:main"
