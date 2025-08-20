@@ -1,6 +1,10 @@
-# FastAPI_x_Typer-CLI
+# FastAPI-based API x Typer-based CLI
 
-Typer CLI + FastAPI API => Share the same business logics and Pydantic models
+[Typer](https://typer.tiangolo.com/) CLI + [FastAPI](https://fastapi.tiangolo.com/) API => Share the same business logics and Pydantic models
+
+> - Typer is based on [Click](https://click.palletsprojects.com/en/stable/)
+> - Typer is not using Pydantic: [Alternatives, Inspiration and Comparisons - Typer](https://typer.tiangolo.com/alternatives/?h=pyda#pydantic)
+> - [Tyro](https://brentyi.github.io/tyro/) does!
 
 ```bash
 app/
@@ -27,10 +31,24 @@ uvicorn app.api:app --reload    # 直接用 uvicorn 跑
 
 # 3) 測 API
 curl -X POST http://127.0.0.1:8000/add -H "Content-Type: application/json" -d '{"x":1,"y":2}'
+# API Doc: http://localhost:8000/docs
 
 # 4) Pydantic AutoCLI version
-autocli add  --x 1 --y 2
+autocli add --x 1 --y 2
+
+# 5) Tyro version (recommend!!)
+# NOTE: we make MAKE_REQUIRED_ARGS_POSITIONAL then `tyrocli add --x 1 --y 2` won't work
+tyrocli add 1 2
+# NOTE: `--json_out` also works
+tyrocli add 1 2 --json-out
+tyrocli serve
 ```
+
+## Todo
+
+- [ ] Submit Task Queue Scenario
+  - [daviddwlee84/Celery-Redis-TaskQueue: Showcase of Celery x Redis for Task Queue](https://github.com/daviddwlee84/Celery-Redis-TaskQueue)
+- [ ] Docker Compose
 
 ## Resources
 
@@ -41,6 +59,12 @@ Related Stuff
 - [endaaman/pydantic-autocli: Automatic CLI generator from Pydantic models with subcommand support and argument validation](https://github.com/endaaman/pydantic-autocli)
 - [mansenfranzen/autodoc_pydantic: Seamlessly integrate pydantic models in your Sphinx documentation.](https://github.com/mansenfranzen/autodoc_pydantic)
   - [🌟 Features — autodoc_pydantic 2.2.0 documentation](https://autodoc-pydantic.readthedocs.io/en/stable/index.html)
+- Tyro
+  - [Hierarchical Structures - tyro](https://brentyi.github.io/tyro/examples/hierarchical_structures/#pydantic-integration)
+  - [Subcommands - tyro](https://brentyi.github.io/tyro/examples/subcommands/)
+  - [tyro.conf - tyro](https://brentyi.github.io/tyro/api/tyro/conf/#tyro.conf.PositionalRequiredArgs)
+    - `tyro.conf.PositionalRequiredArgs`: Make all required arguments (those without default values) positional.
+  - `use_underscores` – If True, uses underscores as word delimiters in the help text instead of hyphens. This only affects the displayed help; *both underscores and hyphens are treated equivalently during parsing*. The default (False) follows the GNU style guide for command-line options.
 
 ---
 
