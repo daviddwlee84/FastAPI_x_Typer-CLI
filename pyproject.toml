@@ -7,6 +7,7 @@ requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.116.1",
     "pydantic>=2.11.7",
+    "pydantic-autocli>=0.2.0",
     "typer>=0.16.1",
     "uvicorn>=0.35.0",
 ]
@@ -26,4 +27,5 @@ dev = [
 ]
 
 [project.scripts]
-myapp = "app.cli:main"
+cli = "app.cli:main"
+autocli = "app.autocli:main"

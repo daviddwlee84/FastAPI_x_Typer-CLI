@@ -18,20 +18,29 @@ uv sync --all-groups
 
 ```bash
 # 1) CLI
-myapp add 1 2
-myapp add 1 2 --json
+cli add 1 2
+cli add 1 2 --json
 
 # 2) 開 API（兩種方式擇一）
-myapp serve --reload            # 透過 Typer 包一層
+cli serve --reload            # 透過 Typer 包一層
 uvicorn app.api:app --reload    # 直接用 uvicorn 跑
 
 # 3) 測 API
 curl -X POST http://127.0.0.1:8000/add -H "Content-Type: application/json" -d '{"x":1,"y":2}'
+
+# 4) Pydantic AutoCLI version
+autocli add  --x 1 --y 2
 ```
 
 ## Resources
 
 - [ChatGPT - Typer + FastAPI integration](https://chatgpt.com/s/t_68a59f7d2e888191a1bbc64bfb74d55a)
+
+Related Stuff
+
+- [endaaman/pydantic-autocli: Automatic CLI generator from Pydantic models with subcommand support and argument validation](https://github.com/endaaman/pydantic-autocli)
+- [mansenfranzen/autodoc_pydantic: Seamlessly integrate pydantic models in your Sphinx documentation.](https://github.com/mansenfranzen/autodoc_pydantic)
+  - [🌟 Features — autodoc_pydantic 2.2.0 documentation](https://autodoc-pydantic.readthedocs.io/en/stable/index.html)
 
 ---
 

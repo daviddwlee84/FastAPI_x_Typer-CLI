@@ -165,6 +165,7 @@ source = { editable = "." }
 dependencies = [
     { name = "fastapi", extra = ["standard"] },
     { name = "pydantic" },
+    { name = "pydantic-autocli" },
     { name = "typer" },
     { name = "uvicorn" },
 ]
@@ -178,6 +179,7 @@ dev = [
 requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.116.1" },
     { name = "pydantic", specifier = ">=2.11.7" },
+    { name = "pydantic-autocli", specifier = ">=0.2.0" },
     { name = "typer", specifier = ">=0.16.1" },
     { name = "uvicorn", specifier = ">=0.35.0" },
 ]
@@ -361,6 +363,18 @@ wheels = [
 [package.optional-dependencies]
 email = [
     { name = "email-validator" },
+]
+
+[[package]]
+name = "pydantic-autocli"
+version = "0.2.0"
+source = { registry = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple" }
+dependencies = [
+    { name = "pydantic" },
+]
+sdist = { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/f5/b5/61032b3b1b96d4471bb0bf9c17336c73f5a0ad08ff7b4e6b062a4ff8d65f/pydantic_autocli-0.2.0.tar.gz", hash = "sha256:b6569ee9d36626e84701fb1de80e8a5e6c6ea71568e5b6b967c6ed66865831a7", size = 50509 }
+wheels = [
+    { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/ed/41/f2f642a5d8846ff5ba37f44dc51934f40e6de7fbfb2162d5bf774abf4742/pydantic_autocli-0.2.0-py3-none-any.whl", hash = "sha256:80dea4bae7a6c4a8730a349ec9f19a499574e4cef03b8bee787e06b8c926f81f", size = 12242 },
 ]
 
 [[package]]
